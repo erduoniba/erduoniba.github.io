@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JS和OC相互调用 | Harry&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="####1、现状：人人都是产品经理 聊聊Web App、Hybrid App与Native App的设计差异
+标点符（钱魏 Way） Native App、Web App 还是Hybrid App？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS和OC相互调用">
+<meta property="og:url" content="http://yoursite.com/2016/02/26/js和oc相互调用/index.html">
+<meta property="og:site_name" content="Harry's Blog">
+<meta property="og:description" content="####1、现状：人人都是产品经理 聊聊Web App、Hybrid App与Native App的设计差异
+标点符（钱魏 Way） Native App、Web App 还是Hybrid App？">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201511/18/1447814628_9097.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201511/18/1447814766_5082.jpg">
+<meta property="og:updated_time" content="2016-02-26T03:39:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS和OC相互调用">
+<meta name="twitter:description" content="####1、现状：人人都是产品经理 聊聊Web App、Hybrid App与Native App的设计差异
+标点符（钱魏 Way） Native App、Web App 还是Hybrid App？">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201511/18/1447814628_9097.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img.my.csdn.net/uploads/201602/25/1456405895_3398.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Harry</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/erduoniba" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/3905632553" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/deng-li-bing-41" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/submodule/" style="font-size: 10px;">submodule</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Harry</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://img.my.csdn.net/uploads/201602/25/1456405895_3398.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Harry</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/erduoniba" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3905632553" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/deng-li-bing-41" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-js和oc相互调用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/26/js和oc相互调用/" class="article-date">
+  	<time datetime="2016-02-26T03:39:08.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS和OC相互调用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####1、现状：<br><code>人人都是产品经理</code> <a href="http://www.woshipm.com/pd/123646.html" target="_blank" rel="external">聊聊Web App、Hybrid App与Native App的设计差异</a></p>
+<p><code>标点符（钱魏 Way）</code> <a href="http://www.biaodianfu.com/native-app-or-web-app-or-hybrid-app.html" target="_blank" rel="external">Native App、Web App 还是Hybrid App？</a></p>
+<p><img src="http://img.my.csdn.net/uploads/201511/18/1447814628_9097.jpg" alt="image"></p>
+<p><img src="http://img.my.csdn.net/uploads/201511/18/1447814766_5082.jpg" alt="image"></p>
+<a id="more"></a>
+<p>1）Native APP：Native Code编程，代码编译之后以2进制或者字节码的形式运行在OS上，直接调用OS的Device API；</p>
+<p>2）Web APP，以HTML+JS+CSS等WEB技术编程，代码运行在浏览器中，通过浏览器来调用Device API（取决于HTML5未来的支持能力）：</p>
+<p>3）Hybrid APP，部分代码以WEB技术编程，部分代码由某些Native Container承担（例如PhonGAP(Cordova)插件，BAE插件），其目的是在HTML5尚未完全支持Device API和Network API的目前阶段，承担这部分职责。（我们当前所使用的）</p>
+<p>####2、Hybrid APP问题：<br>处理原生代码（OC）和HTML5的交互（JS）问题</p>
+<p>####3、JS调用OC代码：</p>
+<p>#####3.1 实现 <code>UIWebView</code> 的代理，然后根据NSURLRequest的URL进行不同处理,JS中的将要传递的数据作为URL  <code>重定向</code> :</p>
+<pre><code>//webView的代理相应重定向
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *requestString = [[[request URL]  absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@&quot;should-------&quot;);
+    if ([requestString hasPrefix:@&quot;fdd://&quot;]) {
+        //根据自己定义的规则，通过字符串的值，调用OC的方法。这里就输出一下字符串了。
+            NSLog(@&quot;===%@&quot;,requestString); //可能包含商品的ID，APP拿到这个ID，使用OC代码执行相关操作
+            return NO; //YES 表示正常加载网页 返回NO 将停止网页加载
+    }
+    return YES;
+}
+</code></pre><p>优点：<code>勉强实现JS调用OC代码，容易理解 ＝_＝</code></p>
+<p>缺点：<code>硬编码，扩展性差</code></p>
+<p>#####3.2 对3.1的一些扩展：</p>
+<p><code>zttjhm的专栏</code> <a href="http://blog.csdn.net/zttjhm/article/details/43304329/" target="_blank" rel="external">UIWebView中Html中用JS调用OC方法及OC执行JS代码</a></p>
+<p><strong>HTML代码：</strong></p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;HTML中用JS调用OC方法&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot;content=&quot;text/html; charset=UTF-8&quot;&gt;
+        &lt;script&gt;
+        &lt;/script&gt;
+&lt;/head&gt;        
+        &lt;body&gt;
+            &lt;br&gt;
+            &lt;br/&gt;
+            &lt;a href =&apos;fdd://alertShow&apos;&gt;alert提示&lt;/a&gt;    //href 要跳转的链接   
+            &lt;br&gt;
+            &lt;br/&gt;
+            &lt;a href =&apos;fdd://actionsheetShow&apos;&gt;actionsheet提示&lt;/a&gt;          
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><strong>iOS代码：</strong></p>
+<pre><code>#pragma clang diagnostic push
+#pragma clang diagnostic ignored &quot;-Warc-performSelector-leaks&quot;
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+
+    NSString *urlstr = request.URL.absoluteString;
+    NSRange range = [urlstr rangeOfString:@&quot;fdd://&quot;];
+
+    if (range.length!=0){
+            urlstr = [urlstr substringFromIndex:(range.location+range.length)];
+        NSString *method = urlstr;
+        SEL selctor = NSSelectorFromString(method);
+        [self performSelector:selctor withObject:nil];
+        return NO;
+    }
+
+    return YES;
+}
+#pragma clang diagnostic pop
+
+- (void)alertShow{
+
+}
+
+- (void)actionsheetShow{
+
+}
+</code></pre><p>优点：<code>实现JS调用OC代码，使用OC方法来处理JS的对应事件，可读性好</code></p>
+<p>缺点：<code>需要两端约定好方法，方法传多个参数不好处理</code></p>
+<p>#####3.3 JavaScriptCore框架：<br><code>CocoaChina</code> <a href="http://www.cocoachina.com/ios/20140409/8127.html" target="_blank" rel="external">iOS7新JavaScriptCore框架介绍</a></p>
+<p><code>hayageek</code> <a href="http://hayageek.com/execute-javascript-in-ios/" target="_blank" rel="external">Execute Javascript in iOS Applications</a></p>
+<p><code>阿福的专栏</code> <a href="http://blog.csdn.net/lizhongfu2013/article/details/9232129" target="_blank" rel="external">IOS7开发～JavaScriptCore（一）</a></p>
+<p><code>阿福的专栏</code> <a href="http://blog.csdn.net/zfpp25_/article/details/9236357" target="_blank" rel="external">IOS7开发～JavaScriptCore（二）</a></p>
+<p><code>Kaitiren的专栏</code> <a href="http://blog.csdn.net/kaitiren/article/details/23256191" target="_blank" rel="external">JavaScriptCore框架在iOS7中的对象交互和管理教程</a></p>
+<p><code>http://trac.webkit.org/</code> <a href="http://trac.webkit.org/browser/trunk/Source/JavaScriptCore/API" target="_blank" rel="external">JavaScriptCore框架源码OC</a></p>
+<p><code>http://opensource.apple.com/</code><a href="http://opensource.apple.com/source/JavaScriptCore/" target="_blank" rel="external">JavaScriptCore框架源码C++</a></p>
+<p><code>limlimlim的专栏</code> <a href="http://blog.csdn.net/limlimlim/article/details/9088161" target="_blank" rel="external">Javascript字典操作</a></p>
+<p><code>j_akill的专栏</code> <a href="http://blog.csdn.net/j_akill/article/details/44463301" target="_blank" rel="external">ios开发，javascript直接调用oc代码而非通过改变url回调方式</a></p>
+<p><code>jwzhangjie的专栏</code> <a href="http://blog.csdn.net/jwzhangjie/article/details/46823721" target="_blank" rel="external">OC与JS互相调用</a></p>
+<p>JavaScriptCore框架只要引入了5个文件，每个文件里都定义跟文件名对应的类：</p>
+<ol>
+<li><p>JSContext (<strong>提供着运行环境</strong>)</p>
+</li>
+<li><p>JSValue (<strong>JavaScript和Object-C之间互换的桥梁</strong>)</p>
+</li>
+<li><p>JSManagedValue （<strong>将 JSValue 转为 JSManagedValue 类型后，可以添加到 JSVirtualMachine 对象中，这样能够保证你在使用过程中 JSValue 对象不会被释放掉，当你不再需要该 JSValue 对象后，从 JSVirtualMachine 中移除该 JSManagedValue 对象，JSValue 对象就会被释放并置空。</strong>）</p>
+</li>
+<li><p>JSVirtualMachine（<strong>JSVirtualMachine就是一个用于保存弱引用对象的数组，加入该数组的弱引用对象因为会被该数组 retain，所以保证了使用时不会被释放，当数组里的对象不再需要时，就从数组中移除，没有了引用的对象就会被系统释放。</strong>）</p>
+</li>
+<li><p>JSExport(<strong>神秘的语言穿梭机—JSExport协议</strong>)</p>
+</li>
+</ol>
+<p><strong>HTML代码：</strong></p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;HTML中用JS调用OC方法&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot;content=&quot;text/html; charset=UTF-8&quot;&gt;
+        &lt;script&gt;
+        &lt;/script&gt;
+&lt;/head&gt;
+
+        &lt;body&gt;
+            &lt;br&gt;
+            &lt;br/&gt;
+            &lt;button id=&quot;hallo&quot; onclick=&quot;buttonClick2(&apos;JS点击方法传递参数标题&apos;, &apos;JS点击方法传递参数信息&apos;)&quot;&gt; JavaScriptCore点击方法传递参数 &lt;/button&gt;
+
+            &lt;br&gt;&lt;br/&gt;
+            &lt;button id=&quot;hallo&quot; onclick=&quot;buttonClick3(&apos;JS点击方法传递参数标题&apos;, &apos;JS点击方法传递参数信息&apos;)&quot;&gt; JavaScriptCore点击方法传递参数,使用对象方式 &lt;/button&gt;
+
+            &lt;br&gt;&lt;br/&gt;
+            &lt;button id=&quot;hallo&quot; onclick=&quot;buttonClick4(&apos;JS点击方法传递参数标题2&apos;, &apos;JS点击方法传递参数信息2&apos;)&quot;&gt; JavaScriptCore点击方法传递参数,使用对象方式2 &lt;/button&gt;
+
+            &lt;br&gt;&lt;br/&gt;
+            &lt;button id=&quot;hallo&quot; onclick=&quot;buttonClick5(&apos;JS点击1&apos;, &apos;JS点击2&apos;, &apos;JS点击3&apos;, &apos;JS点击4&apos;)&quot;&gt; JavaScriptCore点击方法传递多个参数,使用对象方式3 &lt;/button&gt;
+
+            &lt;!--html页面绑定js事件，一般放在href之后，如果放在之前加载JS事件会阻塞界面--&gt;
+            &lt;script type=&quot;text/javascript&quot; src=&quot;redirect.js&quot;&gt;&lt;/script&gt;
+
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><strong>JS代码：</strong></p>
+<pre><code>function max(a, b){
+    return a&gt;b?a:b;
+}
+
+function callBack(a, b){
+    var paramters = postParamters(20, 18); //执行OC的postParamters方法
+    var par1 = paramters[&apos;paramter1&apos;];
+    var par2 = paramters[&apos;paramter2&apos;];
+    paramters[&apos;paramter1&apos;] = par1 + a;
+    paramters[&apos;paramter2&apos;] = par2 + b;
+    return paramters;
+}
+
+function buttonClick2(title, message){
+    javascriptAction(title, message);
+}
+
+var nativeManager; //需要全局申明
+function buttonClick3(title, message){
+    nativeManager.doSomeThing(&apos;js to os&apos; + title + &apos;  &apos; , message);
+}
+
+function buttonClick4(title, message){
+    nativeManager.onePushSubmit(&apos;js to os&apos; + title + &apos;  &apos; , message);
+}
+
+function buttonClick5(s1, s2, s3, s4){
+    nativeManager.morePraramters(s1, s2, s3, s4);
+}
+</code></pre><p><strong>iOS代码：</strong></p>
+<p>OC注入JS代码:</p>
+<pre><code>//OC注入JS代码，再获取JS代码中的变量
+JSContext *iContext = [[JSContext alloc] init];
+[iContext evaluateScript:@&quot;var arr = [21, 7, &apos;harry up&apos;];&quot;];    //上下文执行该JS代码（变量）
+JSValue *jsArr = iContext[@&quot;arr&quot;];
+NSArray *ocArr = [jsArr toArray];
+NSLog(@&quot;JS Array: %@ \n OC Array: %@&quot;, jsArr, ocArr);
+
+//OC注入JS代码，再获取JS代码中的方法
+NSString *jsCode = @&quot;function sum(a, b) {return a+b;}&quot;;       //定义JS方法
+[iContext evaluateScript:jsCode];                            //上下文执行该JS代码（方法）
+JSValue *jsFunc = iContext[@&quot;sum&quot;];                          //从上下文获取JS方法
+JSValue *result = [jsFunc callWithArguments:@[@20, @18]];    //js方法传入参数并且返回结果
+NSLog(@&quot;result : %d&quot;, [result toInt32]);
+</code></pre><p>OC通过JS文件注入JS代码</p>
+<pre><code>//OC注入JS代码（JS文件），再获取JS代码中的方法， （扩展）
+NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;jsCore&quot; ofType:@&quot;js&quot;];
+NSString *pluginScript = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+[iContext evaluateScript:pluginScript];                      //上下文执行该JS代码（方法）
+JSValue *jsFunc2 = iContext[@&quot;max&quot;];                          //从上下文获取JS方法
+JSValue *result2 = [jsFunc2 callWithArguments:@[@20, @18]];    //js方法传入参数并且返回结果
+NSLog(@&quot;result2 : %d&quot;, [result2 toInt32]);
+
+//2、JS执行OC的postParamters方法
+iContext[@&quot;postParamters&quot;] = ^(NSInteger a, NSInteger b){
+    NSDictionary *info = @{@&quot;paramter1&quot; : [NSNumber numberWithInteger:a + 20],
+                           @&quot;paramter2&quot; : [NSNumber numberWithInteger:a + 18]};
+    return info;
+};
+
+//1、OC执行JS中callBack方法
+JSValue *callBackFunc = iContext[@&quot;callBack&quot;];
+JSValue *vv = [callBackFunc callWithArguments:@[@20, @18]];
+NSDictionary *callBackDic = [vv toDictionary];
+NSLog(@&quot;callBackDic : %@&quot;, callBackDic);
+</code></pre><p>OC和HTML上的JS交互</p>
+<pre><code>UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;redirect&quot; ofType:@&quot;html&quot;];
+NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:htmlPath]];
+[webView loadRequest:rq];
+webView.delegate = self;
+[self.view addSubview:webView];
+
+//此处通过当前webView的键获取到jscontext
+JSContext *context = [webView valueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];
+//通过context对JS上的每一个方法进行回调监听
+context[@&quot;javascriptAction&quot;] = ^(){
+    NSArray *args = [JSContext currentArguments];
+    for (JSValue *jsVal in args){
+        NSLog(@&quot;%@&quot;, jsVal);
+    }
+};
+
+//通过对象对JS上的每一个方法进行回调监听
+context[@&quot;nativeManager&quot;] = [NativeManager new];
+</code></pre><p><code>NativeManager.h</code>代码：</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &lt;JavaScriptCore/JavaScriptCore.h&gt;
+
+@protocol NativeManagerExport &lt;JSExport&gt;
+
+///&lt; 对于JS代码是：nativeManager.doSomeThing(s1, s2)，JSExport协议根据JS方法，使用多个:进行分割
+- (void)doSomeThing:(NSString *)someThing :(NSString *)s2;
+
+///&lt; 对于JS代码是：nativeManager.onePushSubmit(s1, s2)，JSExport协议根据JS方法中的大写字母进行方法分割
+- (void)onePush:(NSString *)s1 submit:(NSString *)s2;
+
+///&lt; 对于JS代码是：buttonClick5(s1, s2, s3, s4) 使用JSExport的提供的宏JSExportAs来处理
+JSExportAs(morePraramters,
+       - (void)morePraramtersWithP1:(NSString *)p1 p2:(NSString *)p2 p3:(NSString *)p3 p4:(NSString *)p4
+       );
+@end
+
+@interface NativeManager : NSObject &lt;NativeManagerExport&gt;
+@end
+</code></pre><p><code>NativeManager.m</code>代码：</p>
+<pre><code>#import &quot;NativeManager.h&quot;
+
+@implementation NativeManager
+
+- (void)doSomeThing:(NSString *)someThing :(NSString *)s2{
+    NSLog(@&quot;使用OC对象来处理JS的点击事件&quot;);
+    NSLog(@&quot;js 传递 ： %@ %@&quot;, someThing, s2);
+}
+
+- (void)onePush:(NSString *)s1 submit:(NSString *)s2{
+    NSLog(@&quot;使用OC对象来处理JS的点击事件2&quot;);
+    NSLog(@&quot;js 传递 ： %@ %@&quot;, s1, s2);
+}
+
+- (void)morePraramtersWithP1:(NSString *)p1 p2:(NSString *)p2 p3:(NSString *)p3 p4:(NSString *)p4{
+    NSLog(@&quot;使用OC对象来处理JS的点击事件3&quot;);
+    NSLog(@&quot;js 传递 ： %@ %@ %@ %@&quot;, p1, p2, p3, p4);
+}
+
+@end
+</code></pre><p><strong>iOSlog日志：</strong></p>
+<pre><code>JSToOCDemo[28592:1486323] JS Array: 21,7,harry up 
+OC Array: (
+21,
+7,
+&quot;harry up&quot;
+)
+
+JSToOCDemo[54490:1751112] result : 38
+JSToOCDemo[60727:1932210] callBackDic : {
+    paramter1 = 60;
+    paramter2 = 56;
+}
+
+JSToOCDemo[28592:1486529] JS点击方法传递参数标题
+JSToOCDemo[28592:1486529] JS点击方法传递参数信息
+</code></pre><p>优点：<code>实现JS调用OC代码，使用OC类来管理JS的对应方法，模块化清晰，能处理多个带参数方法</code></p>
+<p>缺点：<code>内存问题需要自己处理好，支持iOS7以上的项目才能使用</code></p>
+<p>#####3.4 EasyJSWebView第三方代码：<br><code>github</code> <a href="https://github.com/dukeland/EasyJSWebView" target="_blank" rel="external">dukeland/EasyJSWebView</a></p>
+<p><code>开源中国-珲少</code> <a href="http://my.oschina.net/u/2340880/blog/398552" target="_blank" rel="external">IOS NSInvocation应用与理解</a></p>
+<p><code>iteye-啸笑天</code> <a href="http://justsee.iteye.com/blog/2019541" target="_blank" rel="external">Objective C运行时（runtime）技术的几个要点总结</a></p>
+<p><strong>HTML代码：</strong></p>
+<pre><code>&lt;button onClick=&quot;javascript:easyJSManager.saveUserInfo(&apos;111111&apos;, &apos;2222222&apos;)&quot;&gt;EasyJSWebView点击事件带参数&lt;/button&gt;
+</code></pre><p><strong>iOS代码：</strong></p>
+<pre><code>EasyJSWebView *eWebView = [[EasyJSWebView alloc] initWithFrame:self.view.bounds];
+[self.view addSubview:eWebView];
+
+EJSWNativeManager *manager = [EJSWNativeManager new];
+//将OC管理类对象manager和JS的全局对象easyJSManager绑定
+[eWebView addJavascriptInterfaces:manager WithName:@&quot;easyJSManager&quot;];
+eWebView.delegate = self;
+
+NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;redirect&quot; ofType:@&quot;html&quot;];
+NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:htmlPath]];
+[eWebView loadRequest:rq];
+</code></pre><p><code>EJSWNativeManager.h</code>代码:</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface EJSWNativeManager : NSObject
+- (void)saveUserInfo:(NSString *)name :(NSString *)password;
+@end
+</code></pre><p><code>EJSWNativeManager.m</code>代码:</p>
+<pre><code>#import &quot;EJSWNativeManager.h&quot;
+
+@implementation EJSWNativeManager
+- (void)saveUserInfo:(NSString *)name :(NSString *)password{
+    NSLog(@&quot;EasyJSWebView点击事件带参数&quot;);
+    NSLog(@&quot;js 传递 ： %@ %@&quot;, name, password);
+}
+@end    
+</code></pre><p><code>EasyJSWebView源码</code>分析：在<code>UIWebViewDelegate</code>代理的<code>webViewDidStartLoad</code>方法中，根据 <strong>[eWebView addJavascriptInterfaces:manager WithName:@”easyJSManager”]</strong> 方法的OC管理类对象manager和JS的全局对象easyJSManager在document创建新的子节点，该子节点的href对应的链接是由easyJSManager和manager的方法按照<strong><code>一定方式拼接</code></strong>，在点击HTML上的 “EasyJSWebView点击事件带参数”按钮时，button的onClick事件：javascript:easyJSManager.saveUserInfo会重新 调用OC的<code>webView: shouldStartLoadWithRequest: navigationType:</code>方法，这个时候再根据<strong><code>一定方式拼接</code></strong>来找到该点击事件所附带的信息。</p>
+<p>优点：<code>实现JS调用OC代码，使用OC类来管理JS的对应方法，模块化清晰</code></p>
+<p>缺点：<code>必须继承EasyJSWebView，这使得它和第三方优秀的webview不好同时使用</code></p>
+<p><a href="https://github.com/erduoniba/JSToOCDemo" target="_blank" rel="external">项目下载地址</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/26/github代码上传/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          GitHub代码上传
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="js和oc相互调用" data-title="JS和OC相互调用" data-url="http://yoursite.com/2016/02/26/js和oc相互调用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"erduoniba"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Harry
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
